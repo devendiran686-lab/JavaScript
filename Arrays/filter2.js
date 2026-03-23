@@ -1,23 +1,36 @@
-let users= [
+// //const { use } = require("react");
 
-{Soap_Name:"Lux",MRP: 50},
-{Soap_Name:"Dove",MRP: 40},
-{Soap_Name:"Hamam",MRP: 60},
-{Soap_Name:"Medimix",MRP: 70},
-{Soap_Name:"Santhur",MRP: 80},
-];
 
-let result = users.filter((use)=>use.MRP>40&&use.Soap_Name!="Lux",
-{
 
-    //return use.MRP>=50 && use.Soap_Name!="Hamam"
+// let users= [
 
-});
-users.forEach((i,index)=>{
+// {Division_Name:"NATURE POWER PAPAYA",MRP: 50, Location:"karaikal"},
+// {Division_Name:"TYKO LIQUID DETERGENT(KA&KL)",MRP: 40,Location:"karaikal"},
+// {Division_Name:"HamaPOWER JUMBO CAKE - KA, KL, AP, TLm",MRP: 60,Location:"karaikal"},
+// {Division_Name:"ULTIMATE DETERGENT CAKE",MRP: 70,Location:"pandicherry"},
+// {Division_Name:"TRIPLE POWER DETERGENT POWDER",MRP: 80,Location:"pandicherry"}
+// ];
 
-    console.log(index+":"+i.Soap_Name+":"+i.MRP);
+// let result = users.filter((use)=>use.MRP>40 && use.Location ==="karaikal",
+// {
+//     //return use.MRP>=50 && use.Soap_Name!="Hamam"
+
+// });
+
+
+// users.forEach((i,index)=>{
+//     console.log(index+":"+i.Division_Name+":"+i.MRP);
     
-});
+// });
+// console.log(result);
 
-console.log(result);
+console.log("addition", add(100,200,1000));
+console.log("substraction",sub(500,500,100));
+console.log("--------------------------------");
+
+import{add,sub} from './Addition.js';
+
+
+
+
 
