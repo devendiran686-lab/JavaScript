@@ -9,16 +9,18 @@
 // });
 
 
-// console.log(res);
-
-
-
 const Bike_price = [5000,6000,7000,8000,9000,10000];
+let re=Bike_price.filter(flr => flr >5000)
 
-let res = Bike_price.filter(flr => flr >5000)
+console.log("Bike Price=",re);
 
-console.log(res);
+console.log("-------------------------------------");
 
+
+
+const num = [500,600,700,800,900,1000];
+let re1= num.filter(nu=>nu>=900)
+console.log("Filtered Number=",re1);
 
 
 

@@ -8,6 +8,8 @@ console.log(res);
 
 console.log(num.length);
 
+export{max};
+
 
 
 

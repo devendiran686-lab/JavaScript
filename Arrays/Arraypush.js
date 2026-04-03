@@ -57,13 +57,10 @@ const cart = (dname) => {
     })
     return update
 }
-
-
 const removeAge21 = () => {
     return addtocart.filter(val => val.age !== 21);
 }
-
-console.log(removeAge21());
+ console.log(removeAge21());
 
 
 

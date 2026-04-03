@@ -1,19 +1,19 @@
 
 let numbers = [1, 2, 3, 4, 5];
 
-let n = numbers.map((n, index) =>  {
+ let result = numbers.map((m, index) =>  {
 
-    console.log(index + ":" + n);
-
+    console.log(index + ":" +m);
 });
 
-console.log(n);
 
-const N = numbers.map((val) => val * 5)
-console.log(N)
+const re1=numbers.map((numbers)=>numbers*5)
+console.log("Result of maping Array 1",re1);
 
-const h=numbers.map((val1)=>val1*10)
-console.log(h);
+
+const re2=numbers.map((numbers)=>numbers*20)
+console.log("Result of maping Array 2",re2);
+
 
 
 

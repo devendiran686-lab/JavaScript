@@ -1,17 +1,11 @@
-let users = [ {Name : "Senthil", Age :45 },
+let products = [ {Division_Name : "PAPAYA", MRP :2550},
+                 {Division_Name : "ULTIMATE DETERGENT CAKE", MRP : 1200},
+                 {Division_Name : "TRIPLE POWER DETERGENT POWDER", MRP:1440}];
 
-    {Name : "Kanna", Age : 50},
-
-  {Name : "Suresh", Age:20}
-
-];
-
-   let result = users.find(user=>user.Age>20);
-   let result1 = users.find(user=>user.Name ="Kanna" )
+   let result = products.find(pro=>pro.MRP>1200);
+   let result1 = products.find(pro=>pro.Division_Name ="TRIPLE POWER DETERGENT POWDER")
 
    console.log(result);
    console.log(result1);
-
-   
 
    //find() is used to find matching element from an arry

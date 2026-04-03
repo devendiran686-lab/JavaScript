@@ -44,7 +44,7 @@ console.log(electronics);
 
 
 
-
+import { max } from "./Arrayind";
 
 
 

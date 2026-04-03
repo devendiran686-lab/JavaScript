@@ -13,12 +13,17 @@ let fruits = [
     {Product_Name :  "Ultimate Power Liquid Detergent 50 ML * 96 pcs", MRP : 10.00},
 
     {Product_Name :  "Detergent 50 ML * 96 pcs", MRP : 30.00},
+    
 ];
 
 fruits.forEach((item,index)=>{
-
-    console.log(index + ": " + "Product Name"+ ": "+item.Product_Name + ": "+"MRP"+": " +item.MRP);
+    
+    console.log(index+":"+"MRP"+":"+item.MRP);
+    console.log(index + ": " + "Product Name"+ ": "+item.Product_Name);
     console.log("-------------------------------------------------------------------");
+    
+
+    
 });
 
 

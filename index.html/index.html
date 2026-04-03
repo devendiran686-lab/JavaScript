@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Schedule Log</title>
+
+<!-- Bootstrap -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+body { padding:20px; }
+.table th, .table td { text-align:center; }
+</style>
+</head>
+
+<body>
+
+<h2>Schedule Log</h2>
+
+<!-- TABLE -->
+<table class="table table-bordered">
+<thead>
+<tr>
+    <th>SalesRep Name</th>
+    <th>Old Data</th>
+    <th>New Data</th>
+    <th>Created By</th>
+    <th>Date Time</th>
+    <th>Status</th>
+</tr>
+</thead>
+<tbody id="table_body"></tbody>
+</table>
+
+<!-- OLD MODAL -->
+<div class="modal fade" id="oldmod">
+<div class="modal-dialog">
+<div class="modal-content">
+<div class="modal-header"><h5>Old Data</h5></div>
+<div class="modal-body">
+<input id="old_state" class="form-control mb-2" placeholder="State">
+<input id="old_region" class="form-control mb-2" placeholder="Region">
+<ul id="old_area"></ul>
+<ul id="old_dist"></ul>
+</div>
+</div>
+</div>
+</div>
+
+<!-- NEW MODAL -->
+<div class="modal fade" id="newmod">
+<div class="modal-dialog">
+<div class="modal-content">
+<div class="modal-header"><h5>New Data</h5></div>
+<div class="modal-body">
+<input id="new_state" class="form-control mb-2" placeholder="State">
+<input id="new_region" class="form-control mb-2" placeholder="Region">
+<ul id="new_area"></ul>
+<ul id="new_dist"></ul>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+// ================= CONFIG =================
+const API = "../API_dashboard/version1.0/admin/logReports.php";
+
+// ================= FETCH HELPER =================
+async function postData(data) {
+    try {
+        const res = await fetch(API, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(data)
+        });
+        if (!res.ok) throw new Error("API error");
+        return await res.json();
+    } catch (err) {
+        console.error(err);
+        alert("API Failed");
+    }
+}
+
+// ================= LOAD TABLE =================
+async function loadTable() {
+    const tbody = document.getElementById("table_body");
+
+    const res = await postData({ type: "schedule_log" });
+
+    if (!res || !res.data || res.data.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="6">No Data</td></tr>`;
+        return;
+    }
+
+    let rows = "";
+
+    res.data.forEach(item => {
+        rows += `
+        <tr>
+            <td>${item.name}</td>
+
+            <td>
+                <button class="btn btn-link editSales"
+                    data-token="${item.sales_rep_token}"
+                    data-date="${item.date}">
+                    View
+                </button>
+            </td>
+
+            <td>
+                ${item.region_token ? `
+                <button class="btn btn-link newSales"
+                    data-token="${item.sales_rep_token}"
+                    data-date="${item.date}">
+                    View
+                </button>` : "-"}
+            </td>
+
+            <td>${item.created_by}</td>
+            <td>${item.date_time}</td>
+            <td>${item.status}</td>
+        </tr>`;
+    });
+
+    tbody.innerHTML = rows;
+}
+
+// ================= OLD DATA =================
+async function loadOld(token, date) {
+    const res = await postData({
+        type: "scheduleold_data",
+        salesReoToken: token,
+        date: date
+    });
+
+    if (!res) return;
+
+    document.getElementById("old_state").value = res.data.state_name;
+    document.getElementById("old_region").value = res.data.region_name;
+
+    document.getElementById("old_area").innerHTML =
+        Object.values(res.datas).map(v => `<li>${v}</li>`).join("");
+
+    document.getElementById("old_dist").innerHTML =
+        Object.values(res.dataas).map(v => `<li>${v}</li>`).join("");
+
+    new bootstrap.Modal(document.getElementById("oldmod")).show();
+}
+
+// ================= NEW DATA =================
+async function loadNew(token, date) {
+    const res = await postData({
+        type: "schedulenew_data",
+        salesReoToken: token,
+        date: date
+    });
+
+    if (!res) return;
+
+    document.getElementById("new_state").value = res.data.state_name;
+    document.getElementById("new_region").value = res.data.region_name;
+
+    document.getElementById("new_area").innerHTML =
+        Object.values(res.datas).map(v => `<li>${v}</li>`).join("");
+
+    document.getElementById("new_dist").innerHTML =
+        Object.values(res.dataas).map(v => `<li>${v}</li>`).join("");
+
+    new bootstrap.Modal(document.getElementById("newmod")).show();
+}
+
+// ================= EVENTS =================
+document.addEventListener("click", (e) => {
+    if (e.target.classList.contains("editSales")) {
+        loadOld(e.target.dataset.token, e.target.dataset.date);
+    }
+
+    if (e.target.classList.contains("newSales")) {
+        loadNew(e.target.dataset.token, e.target.dataset.date);
+    }
+});
+
+// ================= INIT =================
+document.addEventListener("DOMContentLoaded", loadTable);
+
+</script>
+
+</body>
+</html>

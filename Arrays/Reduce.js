@@ -1,30 +1,14 @@
 
 let num = [10,20,30,40,50];
-
 let res = num.reduce((acc,val)=> {
-
     return acc+val;
-
 },0);
 
 console.log(res);
+array.reduce((accumulator, currentValue)=>result,initialValue);
 
-
-
-
-
-
-
-
-
-
+// let nums = [1, 2, 3, 4];
   
-// array.reduce((accumulator, currentValue) => {
-//     return updatedValue;
-// }, initialValue);
-
-
-// accumulator (acc) → stores result
 
 // currentValue (val) → current element
 
@@ -44,10 +28,10 @@ console.log(res);
 // string
 
 
-Array.reduce((acc, val)=>{
+// Array.reduce((acc, val)=>{
 
-return acc+val;
+// return acc+val;
 
-},0);
+// },0);
 
 

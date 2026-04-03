@@ -7,10 +7,9 @@ let SoapDivision = ["Triple Power Detergent Powder",
     "ULTIMATE LIQUID DETERGENT ( KA & KL)"];
 
     SoapDivision.forEach((SoapDivision,index)=>
-         {
+    {
 
     console.log(index  +":"+SoapDivision);
-
     console.log("*************************************");
 
     });

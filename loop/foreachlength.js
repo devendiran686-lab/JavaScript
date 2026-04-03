@@ -12,7 +12,7 @@ let SoapDivision = ["Triple Power Detergent Powder ","Ultimate Liquid Detergent"
      SoapDivision.forEach((SoapDivision,index)=>
         
         {
-      console.log(index+ ":"+ "Soap Division Lenth"+ ": "+SoapDivision.length);
+      console.log(index+ ":  "+"Soap Division Lenth"+ ": "+SoapDivision.length);
     });
 
 

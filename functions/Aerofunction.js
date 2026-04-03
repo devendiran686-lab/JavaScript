@@ -8,15 +8,8 @@
 // display();
 
 const display =()=>{
-
-
-    console.log("Displaying the aero function");
-
-
+   console.log("Displaying the aero function");
     console.log("--------------------------------------");
-
-
-
 };
 
 

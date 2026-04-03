@@ -1,4 +1,4 @@
-let str = "  Power soap  ";
+let str = "  Powersoap  ";
  
 // let strlen = str.trim();
 // let strlen1 = str.trimStart();
